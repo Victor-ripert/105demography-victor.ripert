@@ -166,14 +166,26 @@ class demography() :
         prevision_x = (2050 - lin_reg_x[1]) / lin_reg_x[0]
         print("Country: " + data_str[0])
         print("Fit1")
-        print("\tY = " + str(round(lin_reg_y[0], 2)) + " X + " + str(round(lin_reg_y[1], 2)))
+        print("\tY = " + str(round(lin_reg_y[0], 2)) + " X ", end='')
+        if (lin_reg_y[1] > 0) :
+            print("+ ", end='')
+            print(str(round(lin_reg_y[1], 2)))
+        else :
+            print("- ", end='')
+            print(str(round((lin_reg_y[1] * -1), 2)))
         print("\tRoot-mean-square deviation: " + str(round(rms_y, 2)))
         print("\tPopulation in 2050: " + str(round(prevision_y, 2)))
         print("\n\n")
         print("Fit2")
         a = round(lin_reg_x[0], 2)
         a_str = f'{a: .2f}'
-        print("\tX = {}".format(a_str) + " X + " + str(round(lin_reg_x[1], 2)))
+        print("\tX = {}".format(a_str) + " X ", end='')
+        if (lin_reg_x[1] > 0) :
+            print("+ ", end='')
+            print(str(round(lin_reg_x[1], 2)))
+        else :
+            print("- ", end='')
+            print(str(round((lin_reg_x[1] * -1), 2)))
         print("\tRoot-mean-square deviation: " + str(round(rms_x, 2)))
         print("\tPopulation in 2050: " + str(round(prevision_x, 2)))
         equation = self.find_equation(data, years)
